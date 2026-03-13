@@ -1,4 +1,4 @@
-# Variables
+# ! Quitarlo antes de entregar
 MAIN_CLASS = ro.academyplus.avaj.simulator.Simulator
 ARG = scenario.txt
 
