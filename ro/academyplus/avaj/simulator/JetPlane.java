@@ -1,7 +1,8 @@
 package ro.academyplus.avaj.simulator;
 
 import ro.academyplus.avaj.simulator.aircraft.Aircraft;
-import ro.academyplus.avaj.simulator.exceptions.NegativeCoordinatesException;
+import ro.academyplus.avaj.simulator.exceptions.InvalidScenarioException;
+import ro.academyplus.avaj.simulator.exceptions.InvalidScenarioException;
 
 public class JetPlane extends Aircraft{
 
@@ -10,7 +11,7 @@ public class JetPlane extends Aircraft{
     }
 
     @Override
-    public void updateConditions() throws NegativeCoordinatesException {
+    public void updateConditions() throws InvalidScenarioException {
         String weather = this.weatherTower.getWeather(this.coordinates);
 
         int newLat = this.coordinates.getLatitude();
@@ -47,7 +48,7 @@ public class JetPlane extends Aircraft{
         this.coordinates = new Coordinates(newLon, newLat, newHei);
 
         if (this.coordinates.getHeight() <= 0) {
-            this.coordinates = new Coordinates(newLat, newLon, 0);
+            this.coordinates = new Coordinates(newLon, newLat, 0);
             Logger.log(this.toString() + " landing.");
             this.weatherTower.unregister(this);
         }

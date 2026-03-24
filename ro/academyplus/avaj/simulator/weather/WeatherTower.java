@@ -2,7 +2,7 @@ package ro.academyplus.avaj.simulator.weather;
 
 import ro.academyplus.avaj.simulator.Coordinates;
 import ro.academyplus.avaj.simulator.Tower;
-import ro.academyplus.avaj.simulator.exceptions.NegativeCoordinatesException;
+import ro.academyplus.avaj.simulator.exceptions.InvalidScenarioException;
 
 public class WeatherTower extends Tower {
 
@@ -10,7 +10,7 @@ public class WeatherTower extends Tower {
 		return (WeatherProvider.getProvider().getCurrentWeather(p_coordinates));
 	}
 
-	public void changeWeather() throws NegativeCoordinatesException {
+	public void changeWeather() throws InvalidScenarioException {
 		this.conditionChanged();
 	}
 }
