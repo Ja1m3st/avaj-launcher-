@@ -2,7 +2,6 @@ package ro.academyplus.avaj.simulator;
 
 import ro.academyplus.avaj.simulator.aircraft.Aircraft;
 import ro.academyplus.avaj.simulator.exceptions.InvalidScenarioException;
-import ro.academyplus.avaj.simulator.exceptions.InvalidScenarioException;
 
 public class JetPlane extends Aircraft{
 

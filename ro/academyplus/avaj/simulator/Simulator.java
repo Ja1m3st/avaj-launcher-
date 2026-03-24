@@ -27,9 +27,11 @@ public class Simulator {
             if (firstLine == null) {
                 throw new InvalidScenarioException("Error: Empty file.");
             }
-            int simulations = Integer.parseInt(firstLine.split(" ")[0]);
-            if (simulations < 0) {
-                throw new InvalidScenarioException("The simulations must be positive: " + simulations);
+            int simulations;
+            try {
+                simulations = Integer.parseInt(firstLine.split(" ")[0]);
+            } catch (NumberFormatException e) {
+                throw new InvalidScenarioException("Error: The first line must be a valid number.", 1);
             }
             String buffer_line = null;
             List<String> type_list = List.of("Balloon", "JetPlane", "Helicopter");
@@ -95,10 +97,8 @@ public class Simulator {
                 weatherTower.changeWeather();
             }
 
-            Logger.close();
-
         } catch (IOException e) {
-            Logger.log("Error finding simulation.txt" + e.getMessage());
+            System.out.println("Error finding simulation.txt" + e.getMessage());
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Error: You must provide exactly one file.");
         } catch (InvalidScenarioException e) {
