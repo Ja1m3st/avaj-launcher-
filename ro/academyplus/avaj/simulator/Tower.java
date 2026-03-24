@@ -3,6 +3,8 @@ package ro.academyplus.avaj.simulator;
 import java.util.ArrayList;
 import java.util.List;
 
+import ro.academyplus.avaj.simulator.exceptions.NegativeCoordinatesException;
+
 public class Tower {
 
     private List<Flyable> observers = new ArrayList<>();
@@ -21,7 +23,7 @@ public class Tower {
         }
     }
 
-    protected void conditionChanged() {
+    protected void conditionChanged() throws NegativeCoordinatesException {
         List<Flyable> tempFlyables = new ArrayList<>(observers);
 
         for (Flyable flyable : tempFlyables) {

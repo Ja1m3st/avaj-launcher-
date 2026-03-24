@@ -1,6 +1,7 @@
 package ro.academyplus.avaj.simulator;
 
 import ro.academyplus.avaj.simulator.aircraft.Aircraft;
+import ro.academyplus.avaj.simulator.exceptions.NegativeCoordinatesException;
 
 public class Balloon extends Aircraft {
 
@@ -9,7 +10,7 @@ public class Balloon extends Aircraft {
     }
 
     @Override
-    public void updateConditions() {
+    public void updateConditions() throws NegativeCoordinatesException {
         String weather = this.weatherTower.getWeather(this.coordinates);
 
         int newLat = this.coordinates.getLatitude();
@@ -38,6 +39,7 @@ public class Balloon extends Aircraft {
                 Logger.log(this.toString() + ": It's snowing. We're gonna crash.");
                 break;
         }
+
 
         if (newHei > 100) {
             newHei = 100;
